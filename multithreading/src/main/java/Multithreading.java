@@ -1,16 +1,14 @@
 public class Multithreading {
 
-    private static int counterFinal;
+    private static int counter = 0;
 
     public static void main(String[] args) throws InterruptedException {
 
 
         Runnable runnable = () -> {
-            int counter = 0;
             for (int i = 0; i < 100000; i++) {
                 counter++;
             }
-            counterFinal += counter;
         };
 
         Thread thread1 = new Thread(runnable);
@@ -25,8 +23,8 @@ public class Multithreading {
         thread2.join();
         thread3.join();
 
-        System.out.println(counterFinal);
-        System.out.println(counterFinal);
+        System.out.println(counter);
+        System.out.println(counter);
 
 
     }
