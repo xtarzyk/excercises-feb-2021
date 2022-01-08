@@ -16,6 +16,8 @@ public class Multithreading {
         thread3.start();
 
         System.out.println(counter);
+        System.out.println(counter);
+
 
     }
 }
