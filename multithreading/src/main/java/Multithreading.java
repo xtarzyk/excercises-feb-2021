@@ -24,8 +24,6 @@ public class Multithreading {
         thread3.join();
 
         System.out.println(counter);
-        System.out.println(counter);
-
 
     }
 }
