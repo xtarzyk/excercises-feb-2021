@@ -1,9 +1,5 @@
 package multithreading;
 
-import multithreading.CounterIncrementor;
-
-import static java.lang.Thread.sleep;
-
 public class Multithreading {
 
     static int counter;

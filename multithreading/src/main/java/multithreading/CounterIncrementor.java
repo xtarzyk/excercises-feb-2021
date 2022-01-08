@@ -1,8 +1,9 @@
 package multithreading;
-import static multithreading.Multithreading.*;
+
+import static multithreading.Multithreading.counter;
+import static multithreading.Multithreading.free;
 
 public class CounterIncrementor implements Runnable {
-
 
   @Override
   public void run() {
@@ -40,7 +41,7 @@ public class CounterIncrementor implements Runnable {
     }
     log("Finished");
   }
-  
+
   private void log(String content) {
     System.out.println(Thread.currentThread() + " " +content);
   }
