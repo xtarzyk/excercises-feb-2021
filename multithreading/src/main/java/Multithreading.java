@@ -1,7 +1,9 @@
 public class Multithreading {
+
+    private static int counter = 0;
+
     public static void main(String[] args) {
 
-        int counter;
         Runnable runnable = () -> counter++;
 
         Thread thread1 = new Thread(runnable);
