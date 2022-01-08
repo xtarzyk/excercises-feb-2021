@@ -1,14 +1,12 @@
+import static java.lang.Thread.sleep;
+
 public class Multithreading {
 
-    private static int counter = 0;
+    static int counter;
 
     public static void main(String[] args) throws InterruptedException {
 
-        Runnable runnable = () -> {
-            for (int i = 0; i < 100; i++) {
-                counter++;
-            }
-        };
+        Runnable runnable = new CounterIncrementor();
 
         Thread thread1 = new Thread(runnable);
         Thread thread2 = new Thread(runnable);
