@@ -5,6 +5,7 @@ public class Multithreading {
     public static void main(String[] args) throws InterruptedException {
 
         CounterIncrementor runnable = new CounterIncrementor();
+        runnable.getEmployee().setName("aaaaa");
 
         Thread thread1 = new Thread(runnable);
         Thread thread2 = new Thread(runnable);
