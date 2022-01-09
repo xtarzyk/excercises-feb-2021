@@ -1,57 +1,40 @@
 package multithreading;
 
-public class CounterIncrementor implements Runnable {
-  private static int counter;
+public class CounterIncrementor {
 
-  public static int getCounter() {
-    return counter;
-  }
+    private int counter;
 
-  private static Object free = new Object();
-
-  @Override
-  public void run() {
-    for (int i = 0; i < 1000; i++) {
-      log("przed");
-//        incrementCounter();
-//        incrCounterByThis();
-      incrementCounterBySynchronizer();
-      log("po: " + counter);
+    public void incrementByMany() {
+        for (int i = 0; i < 100; i++) {
+            log("before: " + getCounter());
+            incrementSynchronized();
+            log("after: " + getCounter());
+        }
     }
-  }
 
-  private void log(String content) {
-    System.out.println(Thread.currentThread() + " " + content);
-  }
-
-  private void incrementCounterBySynchronizer() {
-    synchronized (free) {
-      getAnInt();
+    private void log(String content) {
+        System.out.println(Thread.currentThread() + " " + content);
     }
-  }
 
-  private void incrCounterByThis() {
-    synchronized (this) {
-      getAnInt();
+    private synchronized void incrementSynchronized() {
+        synchronized (this) {
+            increment();
+        }
     }
-  }
 
-  private synchronized void incrementCounter() {
-    getAnInt();
-  }
-
-  private int getAnInt() {
-
-    int tmp = counter;
-    tmp++;
-    try {
-      Thread.sleep(1);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
+    private void increment() {
+        int tmp = counter;
+        tmp++;
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        counter = tmp;
     }
-    counter = tmp;
 
-    return counter;
-  }
+    public synchronized int getCounter() {
+        return counter;
+    }
 }
 
