@@ -1,21 +1,22 @@
 package multithreading;
 
 public class CounterIncrementor implements Runnable {
-  private static int counter;
 
-  public static int getCounter() {
+  private int counter;
+
+  public int getCounter() {
     return counter;
   }
 
-  private static Object free = new Object();
+//  private Object free = new Object();
 
   @Override
   public void run() {
     for (int i = 0; i < 100; i++) {
       log("przed");
-//        incrementCounter();
+        incrementCounter();
 //        incrCounterByThis();
-      incrementCounterBySynchronizer();
+//      incrementCounterBySynchronizer();
       log("po: " + counter);
     }
   }
@@ -24,11 +25,11 @@ public class CounterIncrementor implements Runnable {
     System.out.println(Thread.currentThread() + " " + content);
   }
 
-  private void incrementCounterBySynchronizer() {
-    synchronized (free) {
-      getAnInt();
-    }
-  }
+//  private void incrementCounterBySynchronizer() {
+//    synchronized (free) {
+//      getAnInt();
+//    }
+//  }
 
   private void incrCounterByThis() {
     synchronized (this) {
