@@ -22,7 +22,7 @@ public class CounterIncrementor implements Runnable {
       log("Checked and free is true ");
       free = false;
       log("Setting free to false");
-      for (int i = 0; i < 1000; i++) {
+      for (int i = 0; i < 100; i++) {
         int newCounter = counter;
         log("Counter is " + newCounter + " Iteration number: " + i);
         newCounter += 1;
