@@ -4,13 +4,13 @@ public class Multithreading {
 
     public static void main(String[] args) throws InterruptedException {
 
-        CounterIncrementor runnable = new CounterIncrementor();
-        runnable.getEmployee().setName("aaaaa");
+        CounterIncrementor counter = new CounterIncrementor();
+        Runnable runnable = () -> counter.incrementByMany();
 
         Thread thread1 = new Thread(runnable);
         Thread thread2 = new Thread(runnable);
         Thread thread3 = new Thread(runnable);
-        Thread thread4 = new Thread(new CounterIncrementor());
+        Thread thread4 = new Thread(() -> new CounterIncrementor().incrementByMany());
 //        Thread thread4 = new Thread(new RudeCounterIncrementor());
 
         thread1.start();
@@ -23,7 +23,7 @@ public class Multithreading {
         thread3.join();
         thread4.join();
 
-        System.out.println(runnable.getCounter());
+        System.out.println(counter.getCounter());
     }
 }
 

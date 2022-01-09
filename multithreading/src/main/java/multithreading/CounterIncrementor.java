@@ -1,11 +1,10 @@
 package multithreading;
 
-public class CounterIncrementor implements Runnable {
+public class CounterIncrementor {
 
     private int counter;
 
-    @Override
-    public void run() {
+    public void incrementByMany() {
         for (int i = 0; i < 100; i++) {
             log("before: " + getCounter());
             incrementSynchronized();
